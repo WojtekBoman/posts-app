@@ -21,10 +21,12 @@ const Posts = () => {
   const { data } = useGetPostsQuery();
   const [deletePost] = useDeletePostMutation();
 
+  const onPressItem = (id: number) => navigation.navigate('PostDetails', { id });
+
   const onPressItemDelete = (id: number) => deletePost(id);
 
   const renderItem = useCallback(({ item }: { item: Post }) => {
-    return <PostItem item={item} onPressDelete={onPressItemDelete} />;
+    return <PostItem item={item} onPressItem={onPressItem} onPressDelete={onPressItemDelete} />;
   }, []);
 
   return (

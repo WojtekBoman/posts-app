@@ -1,4 +1,4 @@
-import { StyleSheet, Text, View } from 'react-native';
+import { StyleSheet, Text, TouchableOpacity, View } from 'react-native';
 import React from 'react';
 import { Post } from '../types/Post';
 import { Colors } from '../theme/colors';
@@ -10,14 +10,16 @@ import palette from '../theme/palette';
 
 interface Props {
   item: Post;
+  onPressItem: (id: number) => void;
   onPressDelete: (id: number) => void;
 }
 
-const PostItem = ({ item, onPressDelete }: Props) => {
+const PostItem = ({ item, onPressItem, onPressDelete }: Props) => {
+  const handleOnPress = () => onPressItem(item.id);
   const handleOnPressDelete = () => onPressDelete(item.id);
 
   return (
-    <View style={styles.container}>
+    <TouchableOpacity onPress={handleOnPress} style={styles.container}>
       <View>
         <Text style={[FontsStyles.mediumBold, styles.textMargin]}>{item.title}</Text>
         <Text style={[FontsStyles.regular, styles.textMargin]}>{item.description}</Text>
@@ -33,7 +35,7 @@ const PostItem = ({ item, onPressDelete }: Props) => {
           title="Usuń"
         />
       </View>
-    </View>
+    </TouchableOpacity>
   );
 };
 
