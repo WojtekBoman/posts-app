@@ -3,6 +3,7 @@ import { Colors } from './colors';
 
 export const FontsStyles = StyleSheet.create({
   header: {
+    color: Colors.primaryText,
     fontSize: 32,
     fontWeight: 'bold',
   },
