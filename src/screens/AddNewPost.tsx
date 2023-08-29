@@ -41,6 +41,8 @@ const AddNewPost = () => {
             onChangeText={setTitle}
           />
           <TextInput
+            numberOfLines={5}
+            multiline={true}
             maxLength={DESC_MAX_LENGTH}
             style={[styles.input, styles.descInput]}
             placeholder="Opis"
