@@ -31,16 +31,16 @@ const Home = () => {
             headerText="Kilka słów o nas"
             subHeaderText="Czyli kim jesteśmy i dokąd zmierzamy?"
             text={loremIpsumText}
+            onPressMore={onPressMore}
           />
           <Section
             headerText="Nasza oferta"
             subHeaderText="Dowiedz się co możemy Tobie zaoferować"
             text={loremIpsumText}
             style={[styles.lastSectionMargin, styles.additionalMarginTop]}
+            onPressMore={onPressMore}
           />
         </ScrollView>
-
-        <Button style={styles.additionalMarginTop} title="Zobacz więcej" onPress={onPressMore} />
       </View>
     </SafeAreaView>
   );
