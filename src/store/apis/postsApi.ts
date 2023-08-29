@@ -29,7 +29,16 @@ export const postsApi = createApi({
       }),
       invalidatesTags: [{ type: 'Post' }],
     }),
+    addPost: builder.mutation<void, Pick<Post, 'title' | 'description'>>({
+      query: (newPost) => ({
+        url: `/posts`,
+        method: 'POST',
+        body: newPost,
+      }),
+      invalidatesTags: [{ type: 'Post' }],
+    }),
   }),
 });
 
-export const { useGetPostsQuery, useGetPostQuery, useDeletePostMutation } = postsApi;
+export const { useGetPostsQuery, useGetPostQuery, useDeletePostMutation, useAddPostMutation } =
+  postsApi;

@@ -25,6 +25,8 @@ const Posts = () => {
 
   const onPressItemDelete = (id: number) => deletePost(id);
 
+  const handleOnPressAddNew = () => navigation.navigate('AddNewPost');
+
   const renderItem = useCallback(({ item }: { item: Post }) => {
     return <PostItem item={item} onPressItem={onPressItem} onPressDelete={onPressItemDelete} />;
   }, []);
@@ -39,7 +41,10 @@ const Posts = () => {
           renderItem={renderItem}
           keyExtractor={keyExtractor}
         />
-        <Button title="Powrót" onPress={navigation.goBack} />
+        <View style={styles.buttonsContainer}>
+          <Button style={styles.button} title="Powrót" onPress={navigation.goBack} />
+          <Button style={styles.button} title="Dodaj" onPress={handleOnPressAddNew} />
+        </View>
       </View>
     </SafeAreaView>
   );
@@ -48,6 +53,14 @@ const Posts = () => {
 export default Posts;
 
 const styles = StyleSheet.create({
+  button: {
+    flex: 0.49,
+  },
+  buttonsContainer: {
+    alignItems: 'center',
+    flexDirection: 'row',
+    justifyContent: 'space-between',
+  },
   container: {
     backgroundColor: Colors.background,
     flex: 1,
