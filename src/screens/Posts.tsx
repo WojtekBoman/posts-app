@@ -15,6 +15,8 @@ type PostsNavigationProp = NativeStackNavigationProp<RootStackParamList, 'Posts'
 
 const keyExtractor = (item: Post) => `${item.id}`;
 
+const ItemSeparatorComponent = () => <View style={styles.separator} />;
+
 const Posts = () => {
   const navigation = useNavigation<PostsNavigationProp>();
 
@@ -40,6 +42,7 @@ const Posts = () => {
           contentContainerStyle={styles.list}
           renderItem={renderItem}
           keyExtractor={keyExtractor}
+          ItemSeparatorComponent={ItemSeparatorComponent}
         />
         <View style={styles.buttonsContainer}>
           <Button style={styles.button} title="Powrót" onPress={navigation.goBack} />
@@ -74,5 +77,8 @@ const styles = StyleSheet.create({
   list: {
     flexGrow: 1,
     marginTop: spacing[2],
+  },
+  separator: {
+    height: spacing[3],
   },
 });
